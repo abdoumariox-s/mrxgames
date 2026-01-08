@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRXGAMES - Download Free PC Games</title>
+    <meta name="description" content="Download free pre-installed PC games. Horror, Action, Adventure, and more.">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+
+    <!-- Mobile Sidebar & Overlay -->
+    <div class="overlay"></div>
+    <aside class="mobile-sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="logo-text">MRX <span class="text-red">GAMES</span></a>
+            <button class="close-sidebar"><i class="fas fa-times"></i></button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="#"><i class="fas fa-gamepad"></i> All Games</a>
+            <a href="#"><i class="fas fa-fire"></i> Trending</a>
+            <a href="#"><i class="fas fa-list"></i> Categories</a>
+            <a href="#"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </aside>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay">
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for games..." id="gameSearchInput">
+                <button class="close-search"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="search-hints">
+                <span>Try:</span>
+                <a href="#" data-filter="action">Action</a>
+                <a href="#" data-filter="adventure">Adventure</a>
+                <a href="#" data-filter="rpg">RPG</a>
+                <a href="#" data-filter="open-world">Open World</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-left">
+                    <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
+                    <a href="index.html" class="logo-text">MRX <span class="text-red">GAMES</span></a>
+                    <!-- Desktop Navigation -->
+                    <nav class="desktop-nav">
+                        <div class="nav-item">
+                            <a href="#" class="nav-link" data-filter="all">All Games <i
+                                    class="fas fa-chevron-down nav-arrow"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="#" data-filter="action">Action</a>
+                                <a href="#" data-filter="adventure">Adventure</a>
+                                <a href="#" data-filter="rpg">RPG</a>
+                                <a href="#" data-filter="strategy">Strategy</a>
+                                <a href="#" data-filter="simulation">Simulation</a>
+                                <a href="#" data-filter="sports">Sports</a>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#" class="nav-link">Top <i class="fas fa-chevron-down nav-arrow"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="#">Top Rated</a>
+                                <a href="#">Most Downloaded</a>
+                                <a href="#">Editors Choice</a>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#" class="nav-link">Trending <i class="fas fa-chevron-down nav-arrow"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="#">This Week</a>
+                                <a href="#">This Month</a>
+                                <a href="#">All Time</a>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#" class="nav-link">Genre <i class="fas fa-chevron-down nav-arrow"></i></a>
+                            <div class="mega-menu">
+                                <div class="mega-menu-header">
+                                    <span class="mega-menu-title">Featured Genres</span>
+                                    <a href="#" class="view-all">View All Genres <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                                <div class="mega-grid">
+                                    <div class="mega-column">
+                                        <h4>A</h4>
+                                        <ul>
+                                            <li><a href="#" data-filter="action">Action</a></li>
+                                            <li><a href="#" data-filter="adventure">Adventure</a></li>
+                                            <li><a href="#" data-filter="anime">Anime</a></li>
+                                            <li><a href="#" data-filter="arcade">Arcade</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-column">
+                                        <h4>C-H</h4>
+                                        <ul>
+                                            <li><a href="#" data-filter="classic">Classic</a></li>
+                                            <li><a href="#" data-filter="fighting">Fighting</a></li>
+                                            <li><a href="#" data-filter="fps">FPS</a></li>
+                                            <li><a href="#" data-filter="hack-and-slash">Hack and Slash</a></li>
+                                            <li><a href="#" data-filter="horror">Horror</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-column">
+                                        <h4>I-O</h4>
+                                        <ul>
+                                            <li><a href="#" data-filter="indie">Indie</a></li>
+                                            <li><a href="#" data-filter="management">Management</a></li>
+                                            <li><a href="#" data-filter="multiplayer">Multiplayer</a></li>
+                                            <li><a href="#" data-filter="open-world">Open World</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-column">
+                                        <h4>P-R</h4>
+                                        <ul>
+                                            <li><a href="#" data-filter="platformer">Platformer</a></li>
+                                            <li><a href="#" data-filter="puzzle">Puzzle</a></li>
+                                            <li><a href="#" data-filter="racing">Racing</a></li>
+                                            <li><a href="#" data-filter="rpg">RPG</a></li>
+                                            <li><a href="#" data-filter="rts">RTS</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-column">
+                                        <h4>S-Z</h4>
+                                        <ul>
+                                            <li><a href="#" data-filter="sci-fi">Sci-Fi</a></li>
+                                            <li><a href="#" data-filter="shooter">Shooter</a></li>
+                                            <li><a href="#" data-filter="simulation">Simulation</a></li>
+                                            <li><a href="#" data-filter="sports">Sports</a></li>
+                                            <li><a href="#" data-filter="survival">Survival</a></li>
+                                            <li><a href="#" data-filter="strategy">Strategy</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#" class="nav-link">Recent Updates</a>
+                            <div class="dropdown-menu">
+                                <a href="#">Today</a>
+                                <a href="#">Yesterday</a>
+                                <a href="#">Last Week</a>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#" class="nav-link">Collections</a>
+                            <div class="dropdown-menu">
+                                <a href="#">Open World</a>
+                                <a href="#">Cyberpunk</a>
+                                <a href="#">Souls-like</a>
+                                <a href="#">Co-op</a>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#" class="nav-link">Publishers</a>
+                            <div class="dropdown-menu">
+                                <a href="#">Ubisoft</a>
+                                <a href="#">EA</a>
+                                <a href="#">Rockstar</a>
+                                <a href="#">Bethesda</a>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <a href="#" class="nav-link">Request</a>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="header-right">
+                    <button class="search-trigger" title="Search"><i class="fas fa-search"></i></button>
+                    <a href="#" class="nav-icon-btn portal-btn" title="Random Game"><i class="fas fa-dice"></i></a>
+                    <button class="nav-icon-btn theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+
+
+        <!-- Quick Links -->
+        <section class="quick-links">
+            <div class="container">
+                <div class="links-grid">
+                    <a href="#" class="quick-link discord">
+                        <i class="fab fa-discord"></i>
+                        <span>Join Discord</span>
+                    </a>
+                    <a href="#" class="quick-link reddit">
+                        <i class="fab fa-reddit-alien"></i>
+                        <span>Join Reddit</span>
+                    </a>
+                    <a href="#" class="quick-link donate">
+                        <i class="fas fa-heart"></i>
+                        <span>Donate</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Trending -->
+        <section class="content-section alt-bg">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title"><i class="fas fa-fire"></i> Trending Now</h2>
+                </div>
+                <div class="games-grid">
+                    <article class="game-card" data-genre="open-world action">
+                        <div class="card-image">
+                            <!-- Link directly to download -->
+                            <a href="game.html?game=gta5" style="display:block; height:100%;">
+                                <img src="assets/gta_v_poster.jpg" alt="Grand Theft Auto V">
+                                <span class="card-badge hot">HOT</span>
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="game-title"><a href="game.html?game=gta5">Grand Theft Auto V</a></h3>
+                            <div class="game-meta">
+                                <span class="meta-item"><i class="fas fa-hdd"></i> 110 GB</span>
+                                <span class="meta-item tag">Open World</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="game-card" data-genre="adventure open-world">
+                        <div class="card-image">
+                            <!-- Link directly to download -->
+                            <a href="game.html?game=rdr2" style="display:block; height:100%;">
+                                <img src="assets/rdr2_poster.jpg" alt="Red Dead Redemption 2">
+                                <span class="card-badge hot">HOT</span>
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="game-title"><a href="game.html?game=rdr2">Red Dead Redemption 2</a></h3>
+                            <div class="game-meta">
+                                <span class="meta-item"><i class="fas fa-hdd"></i> 120 GB</span>
+                                <span class="meta-item tag">Adventure</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo-text" style="font-size: 2rem; margin-bottom: 20px;">MRX <span
+                            class="text-red">GAMES</span></a>
+                    <p>Your #1 source for the latest pre-installed PC games. Fast, secure, and always free.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>Site</h4>
+                        <a href="#">All Games</a>
+                        <a href="#">Request Game</a>
+                        <a href="#">Sitemap</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Support</h4>
+                        <a href="#">FAQ</a>
+                        <a href="#">How to Install</a>
+                        <a href="#">Report Broken Link</a>
+                        <a href="#">Contact Us</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Legal</h4>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">DMCA</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MRXGAMES. All rights reserved.</p>
+                <div class="footer-utils">
+                    <button id="scrollToTop" class="utils-btn"><i class="fas fa-arrow-up"></i></button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

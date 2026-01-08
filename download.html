@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generating Link... - MRXGAMES</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="particles-js"></div>
+    <div id="pageBackground" class="page-background"></div>
+
+    <style>
+        .page-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background-size: cover;
+            background-position: center;
+            filter: blur(25px) brightness(0.4);
+            transform: scale(1.1);
+            /* Hide blur edges */
+            transition: background-image 0.5s ease-in-out;
+        }
+
+        /* Update treasure box to be slightly more transparent to let blur show through */
+        /* Update treasure box to be slightly more transparent to let blur show through */
+        .treasure-box {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .game-metadata {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .game-metadata .divider {
+            color: #475569;
+        }
+
+        .game-metadata i {
+            color: #2aa9e0;
+            margin-right: 5px;
+        }
+
+        /* Snow Effect */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            color: #fff;
+            user-select: none;
+            z-index: 1000;
+            pointer-events: none;
+            opacity: 0.8;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh);
+            }
+        }
+    </style>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="header-left">
+                    <a href="index.html" class="logo-text">MRX <span class="text-red">GAMES</span></a>
+                    <nav class="desktop-nav">
+                        <a href="#" class="nav-link">All Games</a>
+                        <a href="#" class="nav-link">Top</a>
+                        <a href="#" class="nav-link">Trending</a>
+                        <button class="nav-link genre-btn">Genre <i class="fas fa-circle"
+                                style="font-size: 6px; color: #2aa9e0; margin-left: 4px; vertical-align: middle;"></i></button>
+                        <a href="#" class="nav-link">Recent Updates</a>
+                        <a href="#" class="nav-link">Collections</a>
+                        <a href="#" class="nav-link">Publishers</a>
+                        <a href="#" class="nav-link">Request</a>
+                    </nav>
+                </div>
+
+                <div class="header-right">
+                    <button class="search-trigger" title="Search"><i class="fas fa-search"></i></button>
+                    <a href="#" class="nav-icon-btn portal-btn" title="Random Game"><i class="fas fa-dice"></i></a>
+                    <button class="nav-icon-btn theme-toggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="download-page">
+        <div class="container center-content">
+            <div class="treasure-box">
+                <div class="box-header">
+                    <div class="icon-wrapper spin-anim">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <h1>Opening Treasure Box...</h1>
+                </div>
+
+                <div class="box-content">
+                    <div class="progress-section">
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" id="progressBar"></div>
+                        </div>
+                        <div class="progress-status">
+                            <span id="loadStatus">Loading Data...</span>
+                            <span id="progressText">0%</span>
+                        </div>
+                        <div class="game-metadata" id="gameMetadata" style="opacity: 0; transition: opacity 0.5s;">
+                            <span id="metaVersion"><i class="fas fa-code-branch"></i> V 1.0</span>
+                            <span class="divider">|</span>
+                            <span id="metaDownloads"><i class="fas fa-download"></i> 0</span>
+                            <span class="divider">|</span>
+                            <span id="metaSize"><i class="fas fa-hdd"></i> 0 GB</span>
+                        </div>
+                    </div>
+
+                    <div class="download-ready-content" id="downloadActions" style="opacity: 0; pointer-events: none;">
+                        <p class="pirate-text">"Shiver me timbers! Your booty arrives."</p>
+                        <div class="action-buttons">
+                            <a href="#" class="btn-download-main pulse-anim"><i class="fas fa-download"></i> Download
+                                Now</a>
+                            <button class="btn-copy-link"><i class="fas fa-link"></i> Copy Link</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const loadStatus = document.getElementById('loadStatus');
+            const downloadActions = document.getElementById('downloadActions');
+            const downloadBtn = document.querySelector('.btn-download-main');
+            const pageBg = document.getElementById('pageBackground');
+
+            // Metadata elements
+            const metaDiv = document.getElementById('gameMetadata');
+            const elVersion = document.getElementById('metaVersion');
+            const elDownloads = document.getElementById('metaDownloads');
+            const elSize = document.getElementById('metaSize');
+
+            // Game Data
+            const games = {
+                'gta5': {
+                    link: "#",
+                    name: "Grand Theft Auto V",
+                    image: "assets/gta_v_poster.jpg",
+                    version: "V 1.68 (Build 3095)",
+                    downloads: "1,240,592",
+                    size: "110.0 GB"
+                },
+                'rdr2': {
+                    link: "https://tunnel1.dlproxy.uk/download/XAJeWO15O4C19Ai3Jvuqitqg5l1_CCncB25Eaa4Z71JAAM2ppGVMblIY3AWDW8k1fY0JuJ6RuqfNreqTDOqV3ZNpqRZ8J8r9qy-NDNYXkXN48_c9sUlXH0zDWwpD9s5TiOuBLvSfqaMWzdFJtGvNfwLmeZPL0ZdINewAwJKbsYysAmMLQVccDEyq65RfT-NjauxCflhKXoUP5r7AFoEIwiKMQ_eLKmJConWUvccYiOlXiH0SHoes0p0Z9qDdjESQDw0fQenKisl-vFx-wgK1oE5jFgFsP0oEQkRoVlKbLjx4fyHoBqj5y4rXESFf-ky__JsisoV_ey3C3L9ECdcKe3N0ABIgzussngaGKUBwD8WXC7bZzbJVnHki9a9USi1la8axauJfvDy9bQx95DrFNA9fVSfMw7WtoZWEu_nXwgqqG6Tu7lEdxqpOI-l1XZ3r2XzxKQDABvOrwp8tI7J3DYKC1Yfx29dpqaFRQowmppkjgb1puGUiK_v8lvxZOHBgG2i39Y_piDZKV_hS1trTQ-IZUverIrsVfmz0slIHObl1pqOC_5fod0yZTLFeuX2aAnOGsHYxsPED00MqslJg9dPCPziWUFJJwSIKKwhTEJ03sXDCFenLDqPvidMvh25a?sig=WyYRPTWa9nTQizHEAeDi83NKTp-3sWQLz5Ui05S1_YM",
+                    name: "Red Dead Redemption 2",
+                    image: "assets/rdr2_poster.jpg",
+                    version: "V 1491.50 (Ultimate Edition)",
+                    downloads: "109,917",
+                    size: "113.0 GB"
+                }
+            };
+
+            // Get game from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('game');
+            const selectedGame = games[gameId] || games['gta5']; // Default to GTA5
+
+            downloadBtn.href = selectedGame.link;
+            document.title = `Downloading ${selectedGame.name} - MRXGAMES`;
+
+            // Set blurred background
+            if (selectedGame.image && pageBg) {
+                pageBg.style.backgroundImage = `url('${selectedGame.image}')`;
+            }
+
+            // Set Metadata
+            if (metaDiv && selectedGame.version) {
+                elVersion.innerHTML = `<i class="fas fa-code-branch"></i> ${selectedGame.version}`;
+                elDownloads.innerHTML = `<i class="fas fa-download"></i> ${selectedGame.downloads}`;
+                elSize.innerHTML = `<i class="fas fa-hdd"></i> ${selectedGame.size}`;
+
+                // Show metadata smoothly
+                setTimeout(() => {
+                    metaDiv.style.opacity = '1';
+                }, 500);
+            }
+
+            // Snow Logic
+            function createSnow() {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = '❄';
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.fontSize = (Math.random() * 10 + 10) + 'px';
+                snowflake.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                snowflake.style.opacity = Math.random();
+
+                const particlesContainer = document.getElementById('particles-js') || document.body;
+                particlesContainer.appendChild(snowflake);
+
+                setTimeout(() => {
+                    snowflake.remove();
+                }, 5000);
+            }
+
+            setInterval(createSnow, 100);
+
+            let progress = 0;
+
+            const interval = setInterval(() => {
+                progress += Math.random() * 5; // Slower progress to admire snow
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    showDownloadButtons();
+                }
+                progressBar.style.width = `${progress}%`;
+                progressText.innerText = `${Math.floor(progress)}%`;
+
+                if (progress > 50 && progress < 80) loadStatus.innerText = "Securing Loot...";
+                if (progress >= 80 && progress < 100) loadStatus.innerText = "Finalizing...";
+            }, 100);
+
+            function showDownloadButtons() {
+                setTimeout(() => {
+                    document.querySelector('h1').innerText = "Download Ready!";
+                    loadStatus.innerText = "Complete";
+                    document.querySelector('.icon-wrapper').classList.remove('spin-anim');
+
+                    downloadActions.style.opacity = '1';
+                    downloadActions.style.pointerEvents = 'auto';
+                    downloadActions.style.transform = 'translateY(0)';
+                }, 300);
+            }
+
+            // Copy Link Functionality
+            const copyBtn = document.querySelector('.btn-copy-link');
+            const targetUrl = selectedGame.link;
+
+            if (copyBtn) {
+                copyBtn.addEventListener('click', () => {
+                    navigator.clipboard.writeText(targetUrl).then(() => {
+                        const originalHTML = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                        copyBtn.style.background = 'rgba(74, 222, 128, 0.2)';
+                        copyBtn.style.color = '#4ade80';
+
+                        setTimeout(() => {
+                            copyBtn.innerHTML = originalHTML;
+                            copyBtn.style.background = '';
+                            copyBtn.style.color = '';
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
